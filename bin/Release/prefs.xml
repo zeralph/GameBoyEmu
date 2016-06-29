@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <InterpolationMode>5</InterpolationMode>
+  <Strech>true</Strech>
+  <Speed>100</Speed>
+  <Recent>
+    <recentFile>
+      <path>F:\_SVN\_GameBoyEmu\_Roms</path>
+      <name>Wave Race (USA, Europe).gb</name>
+    </recentFile>
+    <recentFile>
+      <path>F:\_SVN\_GameBoyEmu\_Roms</path>
+      <name>Wave Race (USA, Europe).gb</name>
+    </recentFile>
+    <recentFile>
+      <path>F:\_SVN\_GameBoyEmu\_Roms</path>
+      <name>Super Mario Land (V1.1) (JUA) [!].gb</name>
+    </recentFile>
+    <recentFile>
+      <path>F:\_SVN\_GameBoyEmu\_Roms</path>
+      <name>Batman (World).gb</name>
+    </recentFile>
+    <recentFile>
+      <path>F:\_SVN\_GameBoyEmu\_Roms</path>
+      <name>Trax (U) [b2].gb</name>
+    </recentFile>
+  </Recent>
+  <RecentFileIdx>3</RecentFileIdx>
+  <NbRecentFile>5</NbRecentFile>
+  <inputName>1</inputName>
+  <inputUp>38</inputUp>
+  <inputDown>40</inputDown>
+  <inputLeft>37</inputLeft>
+  <inputRight>39</inputRight>
+  <inputA>65</inputA>
+  <inputB>90</inputB>
+  <inputStart>13</inputStart>
+  <inputSelect>32</inputSelect>
+</CParameters>

@@ -1,0 +1,1 @@
+m_time; sweepDirection; sweepShift; sweepTime; bAttenuate; initialVol; numberVolumeSweep;frequency: myF; lenght; wavePatternDuty; isConsecutive;
