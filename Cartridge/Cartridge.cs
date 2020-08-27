@@ -94,32 +94,41 @@ namespace GameBoyTest
         //////////////////////////////////////////////////////////////////////
         //
         //////////////////////////////////////////////////////////////////////
-        public void Init( String fullPath, String name, bool bSaveToIni )
+        public bool Init( String fullPath, String name, bool bSaveToIni )
         {
-            m_file = name;
-            m_path = Path.GetDirectoryName(fullPath);
-            FileStream fileStream = File.Open(fullPath, FileMode.Open, FileAccess.Read);
-            if (bSaveToIni)
+            try
             {
-                SavePathToIniFile(m_path, m_file);
+                m_file = name;
+                m_path = Path.GetDirectoryName(fullPath);
+                FileStream fileStream = File.Open(fullPath, FileMode.Open, FileAccess.Read);
+                if (bSaveToIni)
+                {
+                    SavePathToIniFile(m_path, m_file);
+                }
+                //copy filestream to buffer
+                if (fileStream != null)
+                {
+                    int lenght = (int)fileStream.Length;
+                    m_cartridgeData = new byte[lenght];
+                    fileStream.Position = 0;
+                    fileStream.Read(m_cartridgeData, 0x00, lenght);
+                }
+                fileStream.Close();
+                //copy first two banks
+                CopyRomDataToBank(0x00, 0x00);
+                CopyRomDataToBank(0x4000, 0x4000);
+                m_mbc1RamMode = 0;
+                m_mbcMode = GameBoy.Ram.ReadByteAt(0x147);
+                if (m_mbcMode == MBC_1)
+                {
+                    LoadMBC1Save();
+                }
+                return true;
             }
-            //copy filestream to buffer
-            if (fileStream != null)
+            catch(Exception e)
             {
-                int lenght= (int)fileStream.Length;
-                m_cartridgeData = new byte[lenght];
-                fileStream.Position = 0;
-                fileStream.Read(m_cartridgeData, 0x00, lenght);
-            }
-            fileStream.Close();
-            //copy first two banks
-            CopyRomDataToBank(0x00, 0x00);
-            CopyRomDataToBank(0x4000, 0x4000);
-            m_mbc1RamMode = 0;
-            m_mbcMode = GameBoy.Ram.ReadByteAt(0x147);
-            if (m_mbcMode == MBC_1)
-            {
-                LoadMBC1Save();
+                MessageBox.Show(e.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
@@ -155,31 +164,32 @@ namespace GameBoyTest
         //////////////////////////////////////////////////////////////////////
         //
         //////////////////////////////////////////////////////////////////////
-        public void LoadBank( ushort adress, byte b )
+        public bool LoadBank( ushort adress, byte b )
         {
             switch (m_mbcMode)
             {
                 case 00:
                     {
-                        return;
+                        return true;
                     }
                 case 01:
                 case 02:
                 case MBC_1:
                     {
                         LoadBankMBC1( adress, b );
-                        return;
+                        return true;
                     }
                 case 5:
                 case 6:
                     {
                         LoadBankMBC2(adress, b);
-                        return;
+                        return true;
                     }
                 default:
                     {
                         ShowMBCError(m_mbcMode);
-                        return;
+                        GameBoy.Cpu.Stop();
+                        return false;
                     }
             }
         }
@@ -189,25 +199,31 @@ namespace GameBoyTest
         //////////////////////////////////////////////////////////////////////
         private void LoadMBC1Save()
         {
-            return;
-            if (m_mbcMode == MBC_1)
+            try
             {
-                String fullPath = m_path + "\\" + m_file;
-                String find = ".gb";
-                String replace = ".sav";
-                int Place = fullPath.LastIndexOf(find);
-                string result = fullPath.Remove(Place, find.Length).Insert(Place, replace);
-                FileStream fs = File.Open(result, FileMode.Open, FileAccess.Read);
-                //copy filestream to buffer
-                if (fs != null)
+                if (m_mbcMode == MBC_1)
                 {
-                    int lenght = m_RamCartridgeData.Length;
-                    fs.Position = 0;
-                    fs.Read(m_RamCartridgeData, 0x00, lenght);
-                    //force bank0 into memory
-                    GameBoy.Ram.SwapRam(ref m_RamCartridgeData, 0);
+                    String fullPath = m_path + "\\" + m_file;
+                    String find = ".gb";
+                    String replace = ".sav";
+                    int Place = fullPath.LastIndexOf(find);
+                    string result = fullPath.Remove(Place, find.Length).Insert(Place, replace);
+                    FileStream fs = File.Open(result, FileMode.Open, FileAccess.Read);
+                    //copy filestream to buffer
+                    if (fs != null)
+                    {
+                        int lenght = m_RamCartridgeData.Length;
+                        fs.Position = 0;
+                        fs.Read(m_RamCartridgeData, 0x00, lenght);
+                        //force bank0 into memory
+                        GameBoy.Ram.SwapRam(ref m_RamCartridgeData, 0);
+                    }
+                    fs.Close();
                 }
-                fs.Close();
+            }
+            catch(Exception e)
+            {
+                e.Message.ToString();
             }
         }
 

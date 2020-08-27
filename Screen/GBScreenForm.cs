@@ -62,7 +62,6 @@ namespace GameBoyTest.Screen
         private myToolStripMenuItem[] m_toolStripRecent;
 
         private bool m_isClosing = false;
-        private bool m_isDisposed = false;
 
         public GBScreenForm(Memory.MappedMemory ram)
         {
@@ -94,12 +93,6 @@ namespace GameBoyTest.Screen
             ReadIniFile();
             RefreshUI();
             this.Show();
-        }
-
-        public void Dispose()
-        {
-            m_isDisposed = true;
-            //Dispose(true);
         }
 
         public void Init()
@@ -229,14 +222,6 @@ namespace GameBoyTest.Screen
         //////////////////////////////////////////////////////////////////////
         //
         //////////////////////////////////////////////////////////////////////
-        public bool IsDisposing()
-        {
-            return m_isDisposed;
-        }
-
-        //////////////////////////////////////////////////////////////////////
-        //
-        //////////////////////////////////////////////////////////////////////
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GameBoy.Cpu.Stop();
@@ -308,7 +293,7 @@ namespace GameBoyTest.Screen
                 //m_cartridge.Init("..//rom//ld.gb");
                 System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
                 openFileDialog1.InitialDirectory = ".";
-                openFileDialog1.Filter = "rom files(*.gb)|*.gb|All files (*.*)|*.*";
+                openFileDialog1.Filter = "GB files(*.gb,*.gbc)|*.gb;*.gbc|All files (*.*)|*.*";
                 openFileDialog1.FilterIndex = 0;
                 openFileDialog1.RestoreDirectory = true;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -392,6 +377,10 @@ namespace GameBoyTest.Screen
             SetSpeed(m_speed);
             //interpolation
             m_interpolation = (InterpolationMode)GameBoy.Parameters.InterpolationMode;
+            if(m_interpolation == InterpolationMode.Default)
+            {
+                m_interpolation = InterpolationMode.NearestNeighbor;
+            }
             //recent
             for (int i = 0; i < GameBoy.Parameters.NbRecentFile; i++)
             {

@@ -73,7 +73,7 @@ namespace GameBoyTest.Z80
         private bool m_DmaTransfertStarted = false;
         private long m_DmaTransfertStartTime = 0;
         private ushort m_DmaTransfertStartAdress = 0;
-        private int m_DmaTransfertByteIndex = 0;
+//        private int m_DmaTransfertByteIndex = 0;
         private int m_curNbCyclesPerScreenRefresh = GAMEBOY_NB_CYCLES_PER_SCREEN_REFRESH;
         private int m_curNbCyclesPerSoundRefresh = GAMEBOY_NB_CYCLES_PER_SOUND_REFRESH;
         //timer
@@ -737,7 +737,7 @@ namespace GameBoyTest.Z80
                 if (b != 0)
                 {
                     m_DmaTransfertStartAdress = (ushort)((ushort)b * (ushort)0x100);
-                    m_DmaTransfertByteIndex = 0;
+//                    m_DmaTransfertByteIndex = 0;
                     m_DmaTransfertStartTime = m_CpuTick;
                     m_DmaTransfertStarted = true;
                     GameBoy.Ram.WriteAt(0xFF46, 0);

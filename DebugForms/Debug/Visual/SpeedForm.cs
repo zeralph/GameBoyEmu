@@ -35,7 +35,11 @@ namespace GameBoyTest.Debug.Visual
 
         private double GetTrackBarSpeedValue()
         {
-            return (double)(trackBar_speed.Value);
+            double d = 0.0f;
+            trackBar_speed.Invoke((MethodInvoker)delegate {
+                d = (double)(trackBar_speed.Value);
+            });
+            return d;
         }
 
         public void Init()

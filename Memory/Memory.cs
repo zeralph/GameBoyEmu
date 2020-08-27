@@ -312,9 +312,9 @@ namespace GameBoyTest.Memory
 
 
         //
-        private void SwitchMBC( ushort adress, byte b)
+        private bool SwitchMBC( ushort adress, byte b)
         {
-            GameBoy.Cartridge.LoadBank(adress, b);
+            return GameBoy.Cartridge.LoadBank(adress, b);
         }
 
 

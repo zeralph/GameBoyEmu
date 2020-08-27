@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GameBoyTest.Debug;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace GameBoyTest.State
 {
@@ -15,32 +16,40 @@ namespace GameBoyTest.State
 
         public static bool saveState()
         {
-            string path = "..//..//states//";
-            DateTime d = DateTime.UtcNow;
-            string fileName = path+GameBoy.Cartridge.GetTitle() + "_" + d.Year + d.Month + d.Day + d.Hour + d.Minute + d.Second+".sta";
-            FileStream fs = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.Write);
-            Bitmap b = GameBoy.Screen.GetBitmapCopy();
-            GameBoy.Cpu.Stop();
-            //IMAGE
-            MemoryStream ms = new MemoryStream();
-            b.Save(ms, ImageFormat.Png);
-            byte[] bitmapData = ms.ToArray();
-            long l = (long)bitmapData.Length;
-            byte[] lb = BitConverter.GetBytes((long)l);
-            fs.Write(lb, 0, lb.Length);
-            fs.Write(bitmapData, 0, bitmapData.Length);
-            //CARTRIDGE
-            byte[] cartdridge = GameBoy.Cartridge.Serialize();
-            fs.Write(cartdridge, 0, cartdridge.Length);
-            //MEM
-            byte[] mem = GameBoy.Ram.GetmemoryMap();
-            fs.Write(mem, 0, mem.Length);
-            //CPU
-            byte[] cpuArray = GameBoy.Cpu.Serialize();
-            fs.Write(cpuArray, 0, cpuArray.Length);
-            fs.Close();
-            GameBoy.Cpu.Start();
-            return true;
+            try
+            {
+                string path = "..//..//states//";
+                DateTime d = DateTime.UtcNow;
+                string fileName = path + GameBoy.Cartridge.GetTitle() + "_" + d.Year + d.Month + d.Day + d.Hour + d.Minute + d.Second + ".sta";
+                FileStream fs = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.Write);
+                Bitmap b = GameBoy.Screen.GetBitmapCopy();
+                GameBoy.Cpu.Stop();
+                //IMAGE
+                MemoryStream ms = new MemoryStream();
+                b.Save(ms, ImageFormat.Png);
+                byte[] bitmapData = ms.ToArray();
+                long l = (long)bitmapData.Length;
+                byte[] lb = BitConverter.GetBytes((long)l);
+                fs.Write(lb, 0, lb.Length);
+                fs.Write(bitmapData, 0, bitmapData.Length);
+                //CARTRIDGE
+                byte[] cartdridge = GameBoy.Cartridge.Serialize();
+                fs.Write(cartdridge, 0, cartdridge.Length);
+                //MEM
+                byte[] mem = GameBoy.Ram.GetmemoryMap();
+                fs.Write(mem, 0, mem.Length);
+                //CPU
+                byte[] cpuArray = GameBoy.Cpu.Serialize();
+                fs.Write(cpuArray, 0, cpuArray.Length);
+                fs.Close();
+                GameBoy.Cpu.Start();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public static Bitmap GetStateImage(string filename)

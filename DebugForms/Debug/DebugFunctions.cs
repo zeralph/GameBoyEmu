@@ -119,57 +119,76 @@ namespace GameBoyTest.Debug
             m_callstackForm.Init();
             m_interruptsForm.Init();
 
-            m_mainForm.WindowState = FormWindowState.Maximized;
+            m_mainForm.Invoke((MethodInvoker)delegate {
+                 m_mainForm.WindowState = FormWindowState.Maximized;
+             });
 
-            m_Z80ViewForm.WindowState = FormWindowState.Normal;
-            m_Z80ViewForm.StartPosition = FormStartPosition.Manual;
-            m_Z80ViewForm.Location = new Point(0, 0);
-            m_Z80ViewForm.Width = 343;
-            m_Z80ViewForm.Height = 601;
+            m_Z80ViewForm.Invoke((MethodInvoker)delegate {
+                 m_Z80ViewForm.WindowState = FormWindowState.Normal;
+                 m_Z80ViewForm.StartPosition = FormStartPosition.Manual;
+                 m_Z80ViewForm.Location = new Point(0, 0);
+                 m_Z80ViewForm.Width = 343;
+                 m_Z80ViewForm.Height = 601;
+             });
 
-            m_instForm.WindowState = FormWindowState.Normal;
-            m_instForm.StartPosition = FormStartPosition.Manual;
-            m_instForm.Location = new Point(0, m_Z80ViewForm.Height);
-            m_instForm.Width = m_Z80ViewForm.Width;
+            m_instForm.Invoke((MethodInvoker)delegate {
+                 m_instForm.WindowState = FormWindowState.Normal;
+                 m_instForm.StartPosition = FormStartPosition.Manual;
+                 m_instForm.Location = new Point(0, m_Z80ViewForm.Height);
+                 m_instForm.Width = m_Z80ViewForm.Width;
+             });
 
-            m_speedForm.WindowState = FormWindowState.Normal;
-            m_speedForm.StartPosition = FormStartPosition.Manual;
-            m_speedForm.Location = new Point(0, m_Z80ViewForm.Height + m_instForm.Height);
-            m_speedForm.Width = m_Z80ViewForm.Width;
-            m_speedForm.Height = 150;
+            m_speedForm.Invoke((MethodInvoker)delegate {
+                 m_speedForm.WindowState = FormWindowState.Normal;
+                 m_speedForm.StartPosition = FormStartPosition.Manual;
+                 m_speedForm.Location = new Point(0, m_Z80ViewForm.Height + m_instForm.Height);
+                 m_speedForm.Width = m_Z80ViewForm.Width;
+                 m_speedForm.Height = 150;
+             });
 
-            m_serialForm.WindowState = FormWindowState.Normal;
-            m_serialForm.StartPosition = FormStartPosition.Manual;
-            m_serialForm.Location = new Point(0, m_Z80ViewForm.Height + m_instForm.Height+m_speedForm.Height);
-            m_serialForm.Width = m_Z80ViewForm.Width;
+            m_serialForm.Invoke((MethodInvoker)delegate {
 
+                 m_serialForm.WindowState = FormWindowState.Normal;
+                 m_serialForm.StartPosition = FormStartPosition.Manual;
+                 m_serialForm.Location = new Point(0, m_Z80ViewForm.Height + m_instForm.Height + m_speedForm.Height);
+                 m_serialForm.Width = m_Z80ViewForm.Width;
+             });
             //----------------------
+            m_codeForm.Invoke((MethodInvoker)delegate {
+                if (m_codeForm != null)
+                {
+                    m_codeForm.WindowState = FormWindowState.Normal;
+                    m_codeForm.StartPosition = FormStartPosition.Manual;
+                    m_codeForm.Location = new Point(m_Z80ViewForm.Width, 0);
+                    m_codeForm.Width = 850;
+                }
+            });
 
-            if (m_codeForm != null)
-            {
-                m_codeForm.WindowState = FormWindowState.Normal;
-                m_codeForm.StartPosition = FormStartPosition.Manual;
-                m_codeForm.Location = new Point(m_Z80ViewForm.Width, 0);
-                m_codeForm.Width = 850;
-            }
+            m_callstackForm.Invoke((MethodInvoker)delegate {
+                m_callstackForm.WindowState = FormWindowState.Normal;
+                m_callstackForm.StartPosition = FormStartPosition.Manual;
+                m_callstackForm.Location = new Point(m_Z80ViewForm.Width, m_codeForm.Height);
+                m_callstackForm.Width = m_codeForm.Width;
+                m_callstackForm.Height = 450;
+            });
 
-            m_callstackForm.WindowState = FormWindowState.Normal;
-            m_callstackForm.StartPosition = FormStartPosition.Manual;
-            m_callstackForm.Location = new Point(m_Z80ViewForm.Width, m_codeForm.Height);
-            m_callstackForm.Width = m_codeForm.Width;
-            m_callstackForm.Height = 450;
+            m_ramForm.Invoke((MethodInvoker)delegate {
+                 m_ramForm.WindowState = FormWindowState.Normal;
+                 m_ramForm.StartPosition = FormStartPosition.Manual;
+                 m_ramForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width, 0);
+             });
 
-            m_ramForm.WindowState = FormWindowState.Normal;
-            m_ramForm.StartPosition = FormStartPosition.Manual;
-            m_ramForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width, 0);
+            m_bgTileMapForm.Invoke((MethodInvoker)delegate {
+                 m_bgTileMapForm.WindowState = FormWindowState.Normal;
+                 m_bgTileMapForm.StartPosition = FormStartPosition.Manual;
+                 m_bgTileMapForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width, m_ramForm.Height);
+             });
 
-            m_bgTileMapForm.WindowState = FormWindowState.Normal;
-            m_bgTileMapForm.StartPosition = FormStartPosition.Manual;
-            m_bgTileMapForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width, m_ramForm.Height);
-
-            m_interruptsForm.WindowState = FormWindowState.Normal;
-            m_interruptsForm.StartPosition = FormStartPosition.Manual;
-            m_interruptsForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width + m_bgTileMapForm.Width, m_ramForm.Height);
+            m_interruptsForm.Invoke((MethodInvoker)delegate {
+                 m_interruptsForm.WindowState = FormWindowState.Normal;
+                 m_interruptsForm.StartPosition = FormStartPosition.Manual;
+                 m_interruptsForm.Location = new Point(m_Z80ViewForm.Width + m_callstackForm.Width + m_bgTileMapForm.Width, m_ramForm.Height);
+             });
 
             m_callstackForm.Visible = true;
             m_instForm.Visible = true;

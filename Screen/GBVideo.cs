@@ -312,7 +312,6 @@ namespace GameBoyTest.Forms.Screen
             //complete step is 456clks --> 114 ticks
             int hBlank_time = 51;
             int oam_time = 20;
-            byte b;
             LCDC_mode curMode = LCDC_mode.HBLANK;
             if (clockTick == 0)
             {

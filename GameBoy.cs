@@ -41,7 +41,7 @@ namespace GameBoyTest
 
         private static System.Threading.Thread m_DebugThread;
         private static bool m_bDebuggerEnabled = false;
-        private static bool m_debugContextInitalized = false;
+//        private static bool m_debugContextInitalized = false;
 
         public GameBoy()
         {
@@ -49,7 +49,7 @@ namespace GameBoyTest
             LoadParameters();
             m_DebugThread = new System.Threading.Thread(DebuggerThread);
             m_DebugThread.Start();
-            m_debugContextInitalized = false;
+//          m_debugContextInitalized = false;
 
             m_timer = new GameBoyTest.MicroTimer.MicroTimer();
 
@@ -108,23 +108,24 @@ namespace GameBoyTest
             m_soundManager.Stop();
             m_cpu.Stop();
             GameBoy.Ram.Clear();
-            m_cartridge.Init(fullpath, name, bSaveToIni);
-            m_cpu.Init();
-            if (m_debuggerForm != null )
+            if (m_cartridge.Init(fullpath, name, bSaveToIni))
             {
-                m_debuggerForm.Init();
+                m_cpu.Init();
+                if (m_debuggerForm != null)
+                {
+                    m_debuggerForm.Init();
+                }
+                if (m_debugFunctions != null)
+                {
+                    m_debugFunctions.Init();
+                }
+                m_soundManager.Init();
+                m_BGScreen.Init();
+                m_BGScreen.SetRomTitle(m_cartridge.GetTitle());
+                m_soundManager.Start();
+                m_cpu.Start();
+                m_video.Start();
             }
-            if (m_debugFunctions != null)
-            {
-                m_debugFunctions.Init();
-            }
-            m_soundManager.Init();
-            m_BGScreen.Init();
-            m_BGScreen.SetRomTitle(m_cartridge.GetTitle());
-            m_soundManager.Start();
-            m_cpu.Start();
-            m_video.Start();
-            
         }
 
         public static void EnableDebugger()
@@ -134,7 +135,20 @@ namespace GameBoyTest
 
         public static void EnableDebugger( bool bEnable )
         {
-            m_bDebuggerEnabled = bEnable;
+            /*
+            //m_bDebuggerEnabled = bEnable;
+            Action act = delegate ()
+            {
+                CreateDebugContext();
+                while(true)
+                {
+                    Thread.Sleep(16);
+                    m_debugFunctions.UpdateForm();
+                }
+                DestroyDebugContext();
+            };
+            act.BeginInvoke(OnDebugFormClosed, null);
+            */
         }
 
         public static void CreateDebugContext()
@@ -143,7 +157,7 @@ namespace GameBoyTest
             m_debugFunctions = new DebugFunctions(m_debuggerForm);
             m_debuggerForm.Init();
             m_debugFunctions.Init();
-            m_debugContextInitalized = true;
+//          m_debugContextInitalized = true;
         }
 
         public static void DestroyDebugContext()
@@ -153,11 +167,22 @@ namespace GameBoyTest
             m_debuggerForm.Close();
             m_debuggerForm.Dispose();
             m_debuggerForm = null;
-            m_debugContextInitalized = false;
+//            m_debugContextInitalized = false;
         }
 
         public static void DebuggerThread()
         {
+            /*
+            Action act = delegate ()
+            {
+                if (m_bDebuggerEnabled && !m_debugContextInitalized)
+                {
+                    CreateDebugContext();
+                }
+            };
+            act.BeginInvoke(OnDebugFormClosed, null);
+            */
+            /*
             while (true)
             {
                 if (m_bDebuggerEnabled && !m_debugContextInitalized)
@@ -175,6 +200,12 @@ namespace GameBoyTest
                 Application.DoEvents();
                 Thread.Sleep(16);
             }
+            */
+        }
+
+        private static void OnDebugFormClosed(IAsyncResult result)
+        {
+
         }
 
         public static void FlushParameters()

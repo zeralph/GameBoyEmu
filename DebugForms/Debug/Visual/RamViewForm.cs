@@ -27,13 +27,19 @@ namespace GameBoyTest.Debug.Visual
 
         public void Init()
         {
-            hexRam.ByteProvider = null;// (Be.Windows.Forms.IByteProvider)m_ram;
-            //hexRam.Model.ByteProvider = m_ram;
-            hexRam.Update();
+            //hexRam.Invoke((MethodInvoker)delegate {
+                hexRam.ByteProvider = null;// (Be.Windows.Forms.IByteProvider)m_ram;
+                //hexRam.Model.ByteProvider = m_ram;
+                hexRam.Update();
+            //});
 
-            //radioButton
-            this.radio_PC.Select();
-            this.checkBox_autoFollow.Checked = true;
+            //radio_PC.Invoke((MethodInvoker)delegate {
+                radio_PC.Select();
+            //});
+
+            //checkBox_autoFollow.Invoke((MethodInvoker)delegate {
+                checkBox_autoFollow.Checked = true;
+            //});
 
             m_lastPC_Position = 0;
             m_lastSP_Position = 0;

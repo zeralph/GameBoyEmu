@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="GameBoyTest.exe.manifest" size="5670">
+    <dependentAssembly dependencyType="install" codebase="GameBoyTest.exe.manifest" size="5617">
       <assemblyIdentity name="GameBoyTest.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>N+h+OgE117naAoljx9y4mfVoUijDcjrYpBkWum+K4LY=</dsig:DigestValue>
+        <dsig:DigestValue>Upv6XdSi4WehB3W8GKQUIpjjXxv/SwYX9Ye7eFRVVLI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

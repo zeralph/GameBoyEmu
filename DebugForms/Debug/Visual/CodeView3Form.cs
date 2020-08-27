@@ -250,8 +250,10 @@ namespace GameBoyTest.Forms.Debug.Visual
                     adress += DecodeData(adress, ref m_strBuilder);
                 }
             }
-            //
-            this.codeBox.Text = m_strBuilder.ToString();
+
+            codeBox.Invoke((MethodInvoker)delegate {
+                codeBox.Text = m_strBuilder.ToString();
+            });
 
             for (int i = 0; i < 0xFFFF; i++)
             {
