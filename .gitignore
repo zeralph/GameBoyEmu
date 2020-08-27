@@ -1,0 +1,15 @@
+**/*.exe
+**/*.pdb
+**/*.orig
+**/*.bak
+/*.dll
+/x64
+/obj
+/.vs
+/.DS_Store
+.DS_Store
+/bin/Debug
+/bin/dll
+/bin/release
+/bin/x64/
+bin/x86
