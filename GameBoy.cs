@@ -29,7 +29,7 @@ namespace GameBoyTest
         private static Z80Cpu m_cpu;
         private static MappedMemory m_memory;
         private static Cartridge m_cartridge;
-        private static DebugFunctions m_debugFunctions;
+//        private static DebugFunctions m_debugFunctions;
         private static GBScreenForm m_BGScreen;
         private static GBVideo m_video;
         private static DebuggerForm m_debuggerForm;
@@ -115,10 +115,10 @@ namespace GameBoyTest
                 {
                     m_debuggerForm.Init();
                 }
-                if (m_debugFunctions != null)
-                {
-                    m_debugFunctions.Init();
-                }
+//                if (m_debugFunctions != null)
+//                {
+//                    m_debugFunctions.Init();
+//                }
                 m_soundManager.Init();
                 m_BGScreen.Init();
                 m_BGScreen.SetRomTitle(m_cartridge.GetTitle());
@@ -135,7 +135,11 @@ namespace GameBoyTest
 
         public static void EnableDebugger( bool bEnable )
         {
-            /*
+			if (m_debuggerForm == null)
+			{
+				CreateDebugContext();
+			}
+			/*
             //m_bDebuggerEnabled = bEnable;
             Action act = delegate ()
             {
@@ -149,21 +153,22 @@ namespace GameBoyTest
             };
             act.BeginInvoke(OnDebugFormClosed, null);
             */
-        }
+		}
 
         public static void CreateDebugContext()
         {
             m_debuggerForm = new DebuggerForm();
-            m_debugFunctions = new DebugFunctions(m_debuggerForm);
+            //m_debugFunctions = new DebugFunctions(m_debuggerForm);
             m_debuggerForm.Init();
-            m_debugFunctions.Init();
-//          m_debugContextInitalized = true;
-        }
+			m_debuggerForm.Show();
+			//m_debugFunctions.Init();
+			//          m_debugContextInitalized = true;
+		}
 
         public static void DestroyDebugContext()
         {
-            m_debugFunctions.Dispose();
-            m_debugFunctions = null;
+            //m_debugFunctions.Dispose();
+            //m_debugFunctions = null;
             m_debuggerForm.Close();
             m_debuggerForm.Dispose();
             m_debuggerForm = null;
@@ -235,7 +240,7 @@ namespace GameBoyTest
 
         public static DebugFunctions Debugger
         {
-            get { return m_debugFunctions; }
+            get { return m_debuggerForm.GetDebugger(); }
         }
 
         public static InputsMgr InputsMgr

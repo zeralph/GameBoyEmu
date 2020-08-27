@@ -12,17 +12,27 @@ namespace GameBoyTest.Debug.Visual
 {
     public partial class DebuggerForm : Form
     {
-        public DebuggerForm()
+		private DebugFunctions m_debugFunctions;
+
+
+		public DebuggerForm()
         {
             InitializeComponent();
-            this.IsMdiContainer = true;
+			this.IsMdiContainer = true;
             this.Width = 1600;
             this.Height = 1200;
             this.Visible = true;
             this.KeyPreview = true;
-        }
+			m_debugFunctions = new DebugFunctions(this);
+		}
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		public DebugFunctions GetDebugger()
+		{
+			return m_debugFunctions;
+		}
+
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             /*
             if( keyData == Keys.F2)

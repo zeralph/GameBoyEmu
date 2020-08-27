@@ -51,8 +51,10 @@ namespace GameBoyTest.Debug
         {
             m_mainForm = main;
             
-            m_Z80ViewForm = new Z80ViewForm( GameBoy.Cpu );       
-            m_Z80ViewForm.MdiParent = m_mainForm;
+            m_Z80ViewForm = new Z80ViewForm( GameBoy.Cpu );
+//			m_Z80ViewForm.Parent = m_mainForm;
+
+			m_Z80ViewForm.MdiParent = m_mainForm;
 
             m_ramForm = new RamViewForm(GameBoy.Ram);
             m_ramForm.MdiParent = m_mainForm;
@@ -77,8 +79,8 @@ namespace GameBoyTest.Debug
 
             m_interruptsForm = new InterruptsForm();
             m_interruptsForm.MdiParent = m_mainForm;
-
-            m_bDoRefresh = true;
+			Init();
+			m_bDoRefresh = true;
             m_IsInit = true;
         }
 
