@@ -113,7 +113,7 @@
   <ItemGroup>
     <Reference Include="Be.Windows.Forms.HexBox, Version=1.4.8.23985, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\dll\Be.Windows.Forms.HexBox.dll</HintPath>
+      <HintPath>dll\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
       <HintPath>NAudio\NAudio.dll</HintPath>
