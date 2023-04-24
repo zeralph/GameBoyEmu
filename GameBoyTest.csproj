@@ -1,17 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EE245B31-CA7B-413D-B9D1-AAA4935F7E26}</ProjectGuid>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameBoyTest</RootNamespace>
-    <AssemblyName>GameBoyTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
     <ManifestCertificateThumbprint>15339B243E078BCFC5BE4FB8EE84CF4555D1A023</ManifestCertificateThumbprint>
@@ -19,12 +9,6 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -40,74 +24,44 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>GBC_Yellow_01.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>CODE_ANALYSIS;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
@@ -118,229 +72,23 @@
     <Reference Include="NAudio">
       <HintPath>NAudio\NAudio.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\SlimDX.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
+    <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Input.Manipulations" />
-    <Reference Include="System.Xml.Linq">
+    <Reference Update="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audio\NoiseWaveProvider32.cs" />
-    <Compile Include="Audio\PatternWaveProvider32.cs" />
-    <Compile Include="Audio\QuadrangularWaveProvider32.cs" />
-    <Compile Include="Audio\Sound1.cs" />
-    <Compile Include="Audio\Sound2.cs" />
-    <Compile Include="Audio\Sound3.cs" />
-    <Compile Include="Audio\Sound4.cs" />
-    <Compile Include="Audio\SoundManager.cs" />
-    <Compile Include="Audio\WaveProvider32 .cs" />
-    <Compile Include="CartridgeInfos.cs" />
-    <Compile Include="Cartridge\Cartridge.cs" />
-    <Compile Include="Debug\SB_Debug.cs" />
-    <Compile Include="DebugForms\Debug\DebugFunctions.cs" />
-    <Compile Include="DebugForms\Debug\RamDataTable.cs">
+    <Compile Update="DebugForms\Debug\RamDataTable.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DebugForms\Debug\Visual\BgTileMapForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\BgTileMapForm.Designer.cs">
-      <DependentUpon>BgTileMapForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\CodeView3Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\CodeView3Form.Designer.cs">
-      <DependentUpon>CodeView3Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\ExternalStuff.cs" />
-    <Compile Include="DebugForms\Debug\Visual\CallstackForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\CallstackForm.Designer.cs">
-      <DependentUpon>CallstackForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\InterruptsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\InterruptsForm.Designer.cs">
-      <DependentUpon>InterruptsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\SerialForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\SerialForm.Designer.cs">
-      <DependentUpon>SerialForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\MainDebugForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\MainDebugForm.Designer.cs">
-      <DependentUpon>MainDebugForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\Misc\GotoLine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\Misc\GotoLine.Designer.cs">
-      <DependentUpon>GotoLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\SpeedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\SpeedForm.Designer.cs">
-      <DependentUpon>SpeedForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\InstructionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\InstructionForm.Designer.cs">
-      <DependentUpon>InstructionForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\RamViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\RamViewForm.Designer.cs">
-      <DependentUpon>RamViewForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\Z80ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DebugForms\Debug\Visual\Z80ViewForm.Designer.cs">
-      <DependentUpon>Z80ViewForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InputManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InputManagerForm.Designer.cs">
-      <DependentUpon>InputManagerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LoadStatesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoadStatesForm.Designer.cs">
-      <DependentUpon>LoadStatesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inputs\Gamepad360.cs" />
-    <Compile Include="Inputs\InputsMgr.cs" />
-    <Compile Include="Interrupts\Interrupts.cs" />
-    <Compile Include="Interrupts\CpuTimer.cs" />
-    <Compile Include="Lfsr\Lfsr.cs" />
-    <Compile Include="MicroTimer\MicroTimer.cs" />
-    <Compile Include="Parameters\CParameters.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Screen\GBVideo.cs" />
-    <Compile Include="GameBoy.cs" />
-    <Compile Include="Memory\Memory.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Screen\GBScreenForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screen\GBScreenForm.Designer.cs">
-      <DependentUpon>GBScreenForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="State\StateSystem.cs" />
-    <Compile Include="Z80\Registers.cs" />
-    <Compile Include="Z80\Z80Cpu.cs" />
-    <Compile Include="Z80\Z80Instruction.cs" />
-    <Compile Include="Z80\Z80InstructionDecoder.cs" />
-    <Compile Include="Z80\Z80Instructions\ALU\Z80Instruction_ALU_16bit.cs" />
-    <Compile Include="Z80\Z80Instructions\ALU\Z80Instruction_ALU_8bit.cs" />
-    <Compile Include="Z80\Z80Instructions\BIT\Z80Instruction_BIT_b_r.cs" />
-    <Compile Include="Z80\Z80Instructions\BIT\Z80Instruction_RES_b_r.cs" />
-    <Compile Include="Z80\Z80Instructions\BIT\Z80Instruction_SET_b_r.cs" />
-    <Compile Include="Z80\Z80Instructions\CALL\Z80Instruction_CALL.cs" />
-    <Compile Include="Z80\Z80Instructions\JUMP\Z80Instruction_JUMP.cs" />
-    <Compile Include="Z80\Z80Instructions\LD\Z80Instruction_LD_8bit.cs" />
-    <Compile Include="Z80\Z80Instructions\LD\Z80Instruction_LD_16bit.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_CCF.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_CPL.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_DAA.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_DI.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_EI.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_HALT.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_SCF.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_STOP.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_SWAP.cs" />
-    <Compile Include="Z80\Z80Instructions\MISC\Z80Instruction_NOP.cs" />
-    <Compile Include="Z80\Z80Instructions\RESTART\Z80Instruction_RST.cs" />
-    <Compile Include="Z80\Z80Instructions\RETURN\Z80Instruction_RET.cs" />
-    <Compile Include="Z80\Z80Instructions\ROTATE_SHIFT\RotateOperations.cs" />
-    <Compile Include="Z80\Z80Instructions\ROTATE_SHIFT\Z80Instruction_ROTATE.cs" />
-    <Compile Include="Z80\Z80Instructions\ROTATE_SHIFT\Z80Instruction_ROTATE_CB.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\BgTileMapForm.resx">
-      <DependentUpon>BgTileMapForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\CallstackForm.resx">
-      <DependentUpon>CallstackForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\CodeView3Form.resx">
-      <DependentUpon>CodeView3Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\InterruptsForm.resx">
-      <DependentUpon>InterruptsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\SerialForm.resx">
-      <DependentUpon>SerialForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\MainDebugForm.resx">
-      <DependentUpon>MainDebugForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\Misc\GotoLine.resx">
-      <DependentUpon>GotoLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\SpeedForm.resx">
-      <DependentUpon>SpeedForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\InstructionForm.resx">
-      <DependentUpon>InstructionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\RamViewForm.resx">
-      <DependentUpon>RamViewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DebugForms\Debug\Visual\Z80ViewForm.resx">
-      <DependentUpon>Z80ViewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InputManagerForm.resx">
-      <DependentUpon>InputManagerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoadStatesForm.resx">
-      <DependentUpon>LoadStatesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screen\GBScreenForm.resx">
-      <DependentUpon>GBScreenForm.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="GameBoyTest_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -377,16 +125,74 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.1" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="GBC_Yellow_01.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <Compile Remove="DebugForms\Debug\Visual\misc\GotoLine.cs" />
+    <Compile Remove="DebugForms\Debug\Visual\misc\GotoLine.Designer.cs" />
+    <Compile Remove="DebugForms\linenum_rtf.cs" />
+    <Compile Remove="DebugForms\MainForm.cs" />
+    <Compile Remove="DebugForms\MainForm.Designer.cs" />
+    <Compile Remove="DebugForms\Screen\GBScreenForm.cs" />
+    <Compile Remove="DebugForms\Screen\GBScreenForm.Designer.cs" />
+    <Compile Remove="DebugForms\Screen\GBVideo.cs" />
+    <Compile Remove="Forms\Debug\DebugFunctions.cs" />
+    <Compile Remove="Forms\Debug\RamDataTable.cs" />
+    <Compile Remove="Forms\Debug\Visual\BgTileMapForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\BgTileMapForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\CallstackForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\CallstackForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\CodeView3Form.cs" />
+    <Compile Remove="Forms\Debug\Visual\CodeView3Form.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\ExternalStuff.cs" />
+    <Compile Remove="Forms\Debug\Visual\InstructionForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\InstructionForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\InterruptsForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\InterruptsForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\misc\GotoLine.cs" />
+    <Compile Remove="Forms\Debug\Visual\misc\GotoLine.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\RamViewForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\RamViewForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\SerialForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\SerialForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\SpeedForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\SpeedForm.Designer.cs" />
+    <Compile Remove="Forms\Debug\Visual\Z80ViewForm.cs" />
+    <Compile Remove="Forms\Debug\Visual\Z80ViewForm.Designer.cs" />
+    <Compile Remove="Forms\linenum_rtf.cs" />
+    <Compile Remove="Forms\MainDebugForm.cs" />
+    <Compile Remove="Forms\MainDebugForm.Designer.cs" />
+    <Compile Remove="Forms\MainForm.cs" />
+    <Compile Remove="Forms\MainForm.Designer.cs" />
+    <Compile Remove="Forms\Screen\GBScreenForm.cs" />
+    <Compile Remove="Forms\Screen\GBScreenForm.Designer.cs" />
+    <Compile Remove="Forms\Screen\GBVideo.cs" />
+    <Compile Remove="Inputs\CJoystick.cs" />
+    <Compile Remove="Z80\Z80BCInstruction.cs" />
+    <Compile Remove="Z80\Z80Instructions\ALU\Z80Instruction_ALU_8bit_conflict-20150110-170712.cs" />
+    <EmbeddedResource Remove="DebugForms\Debug\Visual\misc\GotoLine.resx" />
+    <EmbeddedResource Remove="DebugForms\MainForm.resx" />
+    <EmbeddedResource Remove="DebugForms\Screen\GBScreenForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\BgTileMapForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\CallstackForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\CodeView3Form.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\InstructionForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\InterruptsForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\misc\GotoLine.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\RamViewForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\SerialForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\SpeedForm.resx" />
+    <EmbeddedResource Remove="Forms\Debug\Visual\Z80ViewForm.resx" />
+    <EmbeddedResource Remove="Forms\MainDebugForm.resx" />
+    <EmbeddedResource Remove="Forms\MainForm.resx" />
+    <EmbeddedResource Remove="Forms\Screen\GBScreenForm.resx" />
+  </ItemGroup>
 </Project>

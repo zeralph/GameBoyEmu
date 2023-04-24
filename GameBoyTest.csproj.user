@@ -21,4 +21,45 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="DebugForms\Debug\Visual\BgTileMapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\CallstackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\CodeView3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\InstructionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\InterruptsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\RamViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\SerialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\SpeedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\Debug\Visual\Z80ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DebugForms\MainDebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\InputManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\LoadStatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Screen\GBScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>
